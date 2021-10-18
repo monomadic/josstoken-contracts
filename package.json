@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "build": "hardhat compile",
-        "deploy": "hardhat run scripts/deploy.ts --network testnet",
+        "mint": "hardhat run scripts/mint.ts --network testnet",
         "server": "hardhat node"
     },
     "devDependencies": {

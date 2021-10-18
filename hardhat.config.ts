@@ -1,14 +1,18 @@
-import "@nomiclabs/hardhat-waffle";
-import "@nomiclabs/hardhat-etherscan";
-import "hardhat-deploy";
+import '@nomiclabs/hardhat-etherscan';
+import '@nomiclabs/hardhat-waffle';
+import 'hardhat-deploy';
 
 // tasks
-import "./tasks/accounts";
+// import "./tasks/accounts";
 
-let { TESTNET, MAINNET, BSCSCAN_API_KEY } = require("./secret");
+let {
+  POLYGON_MUMBAI: TESTNET,
+  MAINNET,
+  POLYGONSCAN_API_KEY: API_KEY,
+} = require("./secret");
 
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.6",
   networks: {
     testnet: {
       url: TESTNET.ENDPOINT,
@@ -21,7 +25,7 @@ module.exports = {
   },
 
   etherscan: {
-    apiKey: BSCSCAN_API_KEY,
+    apiKey: API_KEY,
   },
 
   namedAccounts: {
