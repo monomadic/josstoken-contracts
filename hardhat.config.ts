@@ -7,7 +7,7 @@ import 'hardhat-deploy';
 
 let {
   POLYGON_MUMBAI: TESTNET,
-  MAINNET,
+  POLYGON_MAINNET: MAINNET,
   POLYGONSCAN_API_KEY: API_KEY,
 } = require("./secret");
 

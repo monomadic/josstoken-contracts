@@ -4,7 +4,7 @@ const tokenName = "JossToken";
 const tokenSymbol = "JOSS";
 const totalSupply = 300000000;
 const decimalPlaces = 18;
-const mintRecipient = "0x7e6825e7de3e4b65f48df3fd1758d6e3d041f4f1";
+const mintRecipient = "0xf2722335446BCcD8A0C00a6C89d3888e53E2229d";
 
 async function main() {
   const factory = await hre.ethers.getContractFactory("Token");
