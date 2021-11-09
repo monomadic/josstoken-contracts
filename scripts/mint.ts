@@ -4,7 +4,7 @@ const tokenName = "JossToken";
 const tokenSymbol = "JOSS";
 const totalSupply = 300000000;
 const decimalPlaces = 18;
-const mintRecipient = "0xf2722335446BCcD8A0C00a6C89d3888e53E2229d";
+const mintRecipient = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
 
 async function main() {
   const factory = await hre.ethers.getContractFactory("Token");
@@ -17,10 +17,14 @@ async function main() {
   });
 
   // verify contract
-  await hre.run("verify:verify", {
-    address: contract.address,
-    constructorArguments: [tokenName, tokenSymbol],
-  });
+  try {
+    await hre.run("verify:verify", {
+      address: contract.address,
+      constructorArguments: [tokenName, tokenSymbol],
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
   // mint totalSupply and send to mintRecipient
   let instance = factory.attach(contract.address);
