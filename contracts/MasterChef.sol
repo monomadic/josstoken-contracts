@@ -295,7 +295,7 @@ contract MasterChef is ReentrancyGuard, Ownable {
         emit Withdraw(msg.sender, _pid, _amount);
     }
 
-    // Withdraw without caring about rewards. EMERSHCY ONLY.
+    // Withdraw without caring about rewards. EMERGENCY ONLY.
     function emergencyWithdraw(uint256 _pid) external nonReentrant {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
@@ -365,7 +365,7 @@ contract MasterChef is ReentrancyGuard, Ownable {
         return user.rewardKept + _pendingjoss(_pid, msg.sender);
     }
 
-    // DO NOT includes kept reward
+    // DO NOT include kept reward
     function _pendingjoss(uint256 _pid, address _user)
         internal
         view

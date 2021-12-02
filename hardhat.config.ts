@@ -1,10 +1,9 @@
+import './tasks/accounts';
 import '@nomiclabs/hardhat-etherscan';
 import '@nomiclabs/hardhat-waffle';
 import 'hardhat-deploy';
 
 // tasks
-// import "./tasks/accounts";
-
 let {
   POLYGON_MUMBAI: TESTNET,
   POLYGON_MAINNET: MAINNET,
