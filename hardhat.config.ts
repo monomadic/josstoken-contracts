@@ -11,7 +11,9 @@ let {
 } = require("./secret");
 
 module.exports = {
-  solidity: "0.8.6",
+  solidity: {
+    compilers: [{ version: "0.8.6" }, { version: "0.5.16" }],
+  },
   networks: {
     testnet: {
       url: TESTNET.ENDPOINT,
