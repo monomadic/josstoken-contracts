@@ -1,11 +1,13 @@
-import hre from 'hardhat';
+import hre from "hardhat";
 
-const tokenName = "JossToken";
-const tokenSymbol = "JOSS";
-const totalSupply = 300000000;
 const decimalPlaces = 18;
 
-async function mintJoss(mintRecipient: string): Promise<string> {
+export async function mintToken(
+  tokenName: string,
+  tokenSymbol: string,
+  totalSupply: number,
+  mintRecipient: string
+): Promise<string> {
   const factory = await hre.ethers.getContractFactory("Token");
   const contract = await factory.deploy(tokenName, tokenSymbol);
 
@@ -14,6 +16,13 @@ async function mintJoss(mintRecipient: string): Promise<string> {
       `${tokenName} contract deployed and mined to: ${contract.address}`
     );
   });
+
+  if (hre.network.name != "hardhat") {
+    await hre.run("verify:verify", {
+      address: contract.address,
+      constructorArguments: [tokenName, tokenSymbol],
+    });
+  }
 
   // mint totalSupply and send to mintRecipient
   let instance = factory.attach(contract.address);

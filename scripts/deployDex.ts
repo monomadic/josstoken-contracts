@@ -1,29 +1,22 @@
 import hre from "hardhat";
+import { mintToken } from "./lib/mintToken";
+import { deployFactory, createPair } from "./lib/deployFactory";
 
 // the address allowed to change feeTo to a different address.
+const mintRecipient = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
 const feeToSetter = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
 
 async function main() {
-  console.log(hre.config.defaultNetwork);
-  console.log(hre.network);
-  const factory = await hre.ethers.getContractFactory("UniswapV2Factory");
-  const contract = await factory.deploy(feeToSetter);
+  let jossToken = await mintToken(
+    "JossToken",
+    "JOSS",
+    300000000,
+    mintRecipient
+  );
+  let usdcToken = await mintToken("USDCoin", "USDC", 1000000, mintRecipient);
 
-  await contract.deployed().then((contract) => {
-    console.log(`Factory contract deployed and mined to: ${contract.address}`);
-  });
-
-  if (hre.network.name != "hardhat") {
-    // verify contract
-    try {
-      await hre.run("verify:verify", {
-        address: contract.address,
-        constructorArguments: [feeToSetter],
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  let factoryAddress = await deployFactory(feeToSetter);
+  let usdcJossPair = await createPair(factoryAddress, usdcToken, jossToken);
 
   // // mint totalSupply and send to mintRecipient
   // let instance = factory.attach(contract.address);
