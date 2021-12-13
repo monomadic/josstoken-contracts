@@ -1,6 +1,6 @@
 {
     "name": "hardhat-project",
-    "license": "UNLICENSE",
+    "SPDX-License-Identifier": "UNLICENSE",
     "private": true,
     "scripts": {
         "build": "hardhat compile",
