@@ -1,9 +1,11 @@
-import hre from 'hardhat';
+import hre from "hardhat";
 
 // the address allowed to change feeTo to a different address.
 const feeToSetter = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
 
 async function main() {
+  console.log(hre.config.defaultNetwork);
+  console.log(hre.network);
   const factory = await hre.ethers.getContractFactory("UniswapV2Factory");
   const contract = await factory.deploy(feeToSetter);
 
@@ -11,14 +13,16 @@ async function main() {
     console.log(`Factory contract deployed and mined to: ${contract.address}`);
   });
 
-  // verify contract
-  try {
-    await hre.run("verify:verify", {
-      address: contract.address,
-      constructorArguments: [feeToSetter],
-    });
-  } catch (err) {
-    console.log(err);
+  if (hre.network.name != "hardhat") {
+    // verify contract
+    try {
+      await hre.run("verify:verify", {
+        address: contract.address,
+        constructorArguments: [feeToSetter],
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   // // mint totalSupply and send to mintRecipient
