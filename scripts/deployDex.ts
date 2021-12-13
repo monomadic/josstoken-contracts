@@ -1,9 +1,11 @@
 import hre from 'hardhat';
 
+// the address allowed to change feeTo to a different address.
+const feeToSetter = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
+
 async function main() {
   const factory = await hre.ethers.getContractFactory("UniswapV2Factory");
-  const feeAddress = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
-  const contract = await factory.deploy(feeAddress);
+  const contract = await factory.deploy(feeToSetter);
 
   await contract.deployed().then((contract) => {
     console.log(`Factory contract deployed and mined to: ${contract.address}`);
@@ -13,7 +15,7 @@ async function main() {
   try {
     await hre.run("verify:verify", {
       address: contract.address,
-      constructorArguments: [feeAddress],
+      constructorArguments: [feeToSetter],
     });
   } catch (err) {
     console.log(err);
