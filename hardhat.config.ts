@@ -1,7 +1,7 @@
-import './tasks/accounts';
-import '@nomiclabs/hardhat-etherscan';
-import '@nomiclabs/hardhat-waffle';
-import 'hardhat-deploy';
+import "./tasks/accounts";
+import "@nomiclabs/hardhat-etherscan";
+import "@nomiclabs/hardhat-waffle";
+import "hardhat-deploy";
 
 // tasks
 let {
@@ -12,7 +12,11 @@ let {
 
 module.exports = {
   solidity: {
-    compilers: [{ version: "0.8.6" }, { version: "0.5.16" }],
+    compilers: [
+      { version: "0.8.6" },
+      { version: "0.6.6" },
+      { version: "0.5.16" },
+    ],
   },
   networks: {
     testnet: {
