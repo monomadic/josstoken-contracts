@@ -13,7 +13,13 @@ async function main() {
     300000000,
     mintRecipient
   );
-  let usdcToken = await mintToken("USDCoin", "USDC", 1000000, mintRecipient);
+  let wMaticToken = await mintToken(
+    "Wrapped MATIC",
+    "wMATIC",
+    1000,
+    mintRecipient
+  );
+  let usdcToken = await mintToken("USDC Coin", "USDC", 1000000, mintRecipient);
 
   let factoryAddress = await deployFactory(feeToSetter);
   let usdcJossPair = await createPair(factoryAddress, usdcToken, jossToken);
