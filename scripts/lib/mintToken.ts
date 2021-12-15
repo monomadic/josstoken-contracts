@@ -15,14 +15,14 @@ export async function mintToken(
     console.log(
       `${tokenName} contract deployed and mined to: ${contract.address}`
     );
-  });
 
-  if (hre.network.name != "hardhat") {
-    await hre.run("verify:verify", {
-      address: contract.address,
-      constructorArguments: [tokenName, tokenSymbol],
-    });
-  }
+    if (hre.network.name != "hardhat") {
+      hre.run("verify:verify", {
+        address: contract.address,
+        constructorArguments: [tokenName, tokenSymbol],
+      });
+    }
+  });
 
   // mint totalSupply and send to mintRecipient
   let instance = factory.attach(contract.address);

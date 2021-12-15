@@ -4,10 +4,8 @@
     "private": true,
     "scripts": {
         "build": "hardhat compile",
-        "deploy": "hardhat run scripts/deployLocal.ts",
+        "deploy": "hardhat run scripts/deployDex.ts",
         "accounts": "hardhat accounts",
-        "polygon:testnet:deploy": "hardhat run scripts/mint.ts --network testnet",
-        "polygon:testnet:accounts": "hardhat accounts --network polygon_testnet",
         "server": "hardhat node"
     },
     "devDependencies": {
