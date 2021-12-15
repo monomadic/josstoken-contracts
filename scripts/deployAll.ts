@@ -1,13 +1,12 @@
-import hre from "hardhat";
-import { mintToken } from "./lib/mintToken";
-import { deployFactory, createPair } from "./lib/deployFactory";
+import { createPair, deployFactory } from './lib/deployFactory';
+import { printSigner } from './lib/info';
+import { mintToken } from './lib/mintToken';
 
 // the address allowed to change feeTo to a different address.
-const mintRecipient = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
 const feeToSetter = "0x41e80D768BC9eB7646Fb63eC9bd38e77331d60e2";
 
 async function main() {
-  
+  const mintRecipient: string = await printSigner();
 
   let jossToken = await mintToken(
     "JossToken",
@@ -22,7 +21,6 @@ async function main() {
     mintRecipient
   );
   let usdcToken = await mintToken("USDC Coin", "USDC", 1000000, mintRecipient);
-
   let factoryAddress = await deployFactory(feeToSetter);
   let usdcJossPair = await createPair(factoryAddress, usdcToken, jossToken);
 

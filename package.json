@@ -3,6 +3,7 @@
     "SPDX-License-Identifier": "UNLICENSED",
     "private": true,
     "scripts": {
+        "cleanup": "rm -rf artifacts && rm -rf cache",
         "build": "hardhat compile",
         "deploy": "hardhat run scripts/deployDex.ts",
         "accounts": "hardhat accounts",

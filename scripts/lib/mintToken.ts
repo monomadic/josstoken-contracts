@@ -1,4 +1,4 @@
-import hre from "hardhat";
+import hre from 'hardhat';
 
 const decimalPlaces = 18;
 
@@ -11,14 +11,18 @@ export async function mintToken(
   const factory = await hre.ethers.getContractFactory("Token");
   const contract = await factory.deploy(tokenName, tokenSymbol);
 
-  await contract.deployed().then((contract) => {
-    console.log(
-      `${tokenName} contract deployed and mined to: ${contract.address}`
-    );
+  console.log(`${tokenName} contract deployed to: ${contract.address}`);
 
+  contract.deployed().then((deployedContract) => {
+    // console.log(
+    //   deployedContract.signer,
+    //   "deployed to",
+    //   deployedContract.address
+    // );
+    // verify
     if (hre.network.name != "hardhat") {
       hre.run("verify:verify", {
-        address: contract.address,
+        address: deployedContract.address,
         constructorArguments: [tokenName, tokenSymbol],
       });
     }
