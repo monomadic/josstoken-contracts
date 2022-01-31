@@ -1,7 +1,9 @@
-import './tasks/accounts';
 import '@nomiclabs/hardhat-etherscan';
 import '@nomiclabs/hardhat-waffle';
 import 'hardhat-deploy';
+
+import './tasks/accountTasks';
+import './tasks/tokenTasks';
 
 require("dotenv").config();
 
