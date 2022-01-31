@@ -3,6 +3,7 @@ import '@nomiclabs/hardhat-waffle';
 import 'hardhat-deploy';
 
 import './tasks/accountTasks';
+import './tasks/masterChefTasks';
 import './tasks/tokenTasks';
 
 require("dotenv").config();
