@@ -3,7 +3,7 @@ import '@nomiclabs/hardhat-etherscan';
 import '@nomiclabs/hardhat-waffle';
 import 'hardhat-deploy';
 
-let secrets = require("./secret");
+require("dotenv").config();
 
 module.exports = {
   solidity: {
@@ -14,22 +14,29 @@ module.exports = {
     ],
   },
   networks: {
-    polygon_testnet: {
-      url: secrets.POLYGON_MUMBAI.ENDPOINT,
-      accounts: [secrets.POLYGON_MUMBAI.PRIVATE_KEY],
-    },
-    polygon_mainnet: {
-      url: secrets.POLYGON_MAINNET.ENDPOINT,
-      accounts: [secrets.POLYGON_MAINNET.PRIVATE_KEY],
-    },
     bsc_testnet: {
-      url: secrets.BSC_TESTNET.ENDPOINT,
-      accounts: [secrets.BSC_TESTNET.PRIVATE_KEY],
+      url: process.env.BSC_TESTNET_ENDPOINT,
+      accounts: [process.env.TESTNET_PRIVATE_KEY],
+    },
+    polygon_testnet: {
+      url: process.env.POLYGON_TESTNET_ENDPOINT,
+      accounts: [process.env.TESTNET_PRIVATE_KEY],
+    },
+    avax_testnet: {
+      url: process.env.AVAX_TESTNET_ENDPOINT,
+      accounts: [process.env.TESTNET_PRIVATE_KEY],
     },
   },
 
   etherscan: {
-    apiKey: secrets.BSC_API_KEY,
+    apiKey: {
+      bsc: process.env.BSC_EXPLORER_API_KEY,
+      bscTestnet: process.env.BSC_EXPLORER_API_KEY,
+      polygon: process.env.POLYGON_EXPLORER_API_KEY,
+      polygonMumbai: process.env.POLYGON_EXPLORER_API_KEY,
+      avalanche: process.env.AVAX_EXPLORER_API_KEY,
+      avalancheFujiTestnet: process.env.AVAX_EXPLORER_API_KEY,
+    },
   },
 
   namedAccounts: {
