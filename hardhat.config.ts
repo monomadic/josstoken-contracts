@@ -1,20 +1,37 @@
-import '@nomiclabs/hardhat-etherscan';
-import '@nomiclabs/hardhat-waffle';
-import 'hardhat-deploy';
+import '@nomiclabs/hardhat-etherscan'
+import '@nomiclabs/hardhat-waffle'
+import 'hardhat-deploy'
 
-import './tasks/accountTasks';
-import './tasks/dexTasks';
-import './tasks/masterChefTasks';
-import './tasks/tokenTasks';
+import './tasks/accountTasks'
+import './tasks/dexTasks'
+import './tasks/masterChefTasks'
+import './tasks/tokenTasks'
 
-require("dotenv").config();
+require('dotenv').config()
 
 module.exports = {
   solidity: {
     compilers: [
+      {
+        version: '0.6.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: '0.6.12',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      { version: '0.5.16' },
       { version: "0.8.6" },
-      { version: "0.6.6" },
-      { version: "0.5.16" },
     ],
   },
   networks: {
@@ -39,7 +56,7 @@ module.exports = {
       polygon: process.env.POLYGON_EXPLORER_API_KEY,
       polygonMumbai: process.env.POLYGON_EXPLORER_API_KEY,
       avalanche: process.env.AVAX_EXPLORER_API_KEY,
-      avalancheFujiTestnet: process.env.AVAX_EXPLORER_API_KEY
+      avalancheFujiTestnet: process.env.AVAX_EXPLORER_API_KEY,
     },
   },
 
@@ -48,9 +65,9 @@ module.exports = {
   },
 
   gasReporter: {
-    currency: "USD",
+    currency: 'USD',
     enabled: process.env.REPORT_GAS ? true : false,
     excludeContracts: [],
-    src: "./contracts",
+    src: './contracts',
   },
-};
+}
