@@ -3,6 +3,7 @@ import '@nomiclabs/hardhat-waffle';
 import 'hardhat-deploy';
 
 import './tasks/accountTasks';
+import './tasks/dexTasks';
 import './tasks/masterChefTasks';
 import './tasks/tokenTasks';
 
@@ -38,7 +39,7 @@ module.exports = {
       polygon: process.env.POLYGON_EXPLORER_API_KEY,
       polygonMumbai: process.env.POLYGON_EXPLORER_API_KEY,
       avalanche: process.env.AVAX_EXPLORER_API_KEY,
-      avalancheFujiTestnet: process.env.AVAX_EXPLORER_API_KEY,
+      avalancheFujiTestnet: process.env.AVAX_EXPLORER_API_KEY
     },
   },
 
