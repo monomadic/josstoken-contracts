@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSE
+// SPDX-License-Identifier: UNLICENSED
 // Token.sol
 
 pragma solidity ^0.8.6;
