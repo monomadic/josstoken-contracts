@@ -25,14 +25,14 @@ task('deployRouter', 'Deploys a UniswapV2Router02')
     console.log(`Deployed UniswapV2Router02 to ${deployed.address}`)
   })
 
-// task('createPair', 'Create a UniswapV2 Pair')
-//   .addParam('feeToSetter', 'account permitted to alter feeTo')
-//   .setAction(async (args, hre) => {
-//     const UniswapV2Factory = await hre.ethers.getContractFactory('UniswapV2Factory');
-//     const uniswapV2Factory = await UniswapV2Factory.deploy(
-//       args.feeToSetter,
-//     );
-//     const deployed = await uniswapV2Factory.deployed();
+task('createPair', 'Create a UniswapV2 Pair')
+  .addParam('feeToSetter', 'account permitted to alter feeTo')
+  .setAction(async (args, hre) => {
+    const UniswapV2Factory = await hre.ethers.getContractFactory('UniswapV2Factory');
+    const uniswapV2Factory = await UniswapV2Factory.deploy(
+      args.feeToSetter,
+    );
+    const deployed = await uniswapV2Factory.deployed();
 
-//     console.log(`Deployed UniswapV2Factory token to ${deployed.address}`);
-//   })
+    console.log(`Deployed UniswapV2Factory token to ${deployed.address}`);
+  })

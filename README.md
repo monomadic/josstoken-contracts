@@ -38,6 +38,9 @@ npx hardhat --network avax_testnet verify \
 npx hardhat --network avax_testnet deployRouter \
     --factory-address "0x62a52483EB1DcB706054Ae6164f1221abE9f5aa8" \
     --weth-address "0x1C226af1aB4b29e53BfDA6ffF34A1894BAeF6c9F"
+
+# add pair
+
 ```
 
 - deploy account: `0xe729259c7C6A84c3994FB33f1F32cA9081be2e80`
@@ -45,4 +48,8 @@ npx hardhat --network avax_testnet deployRouter \
     - https://testnet.snowtrace.io/address/0x8Fa5b4185808AeFD11b3a72C78E4b794BBb7a025
 - WAVAX token: `0x1C226af1aB4b29e53BfDA6ffF34A1894BAeF6c9F`
 - UniswapV2Factory: `0x62a52483EB1DcB706054Ae6164f1221abE9f5aa8`
-- UniswapV2Router: ``
+    - https://testnet.snowtrace.io/address/0x62a52483EB1DcB706054Ae6164f1221abE9f5aa8
+- UniswapV2Router: `0x92c043B5F8eD5122881073d0b5c4A05AF4839A3C`
+    - https://testnet.snowtrace.io/address/0x92c043B5F8eD5122881073d0b5c4A05AF4839A3C#code
+
+- JOSS-WAVAX pair: `0x96dba7e8b51ef323c4b3635f3440ecfc6b7302f0`
